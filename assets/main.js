@@ -2,7 +2,7 @@ async function calculateBMI() {
   const weight = document.getElementById("weight").value;
   const height = document.getElementById("height").value;
   if (!weight || !height) {
-    alert("يرجى إدخال الوزن والطول");
+    alert("Please enter weight and height");
     return;
   }
 
@@ -11,7 +11,7 @@ async function calculateBMI() {
       `Sending request to API with weight=${weight} and height=${height}`
     );
     const response = await fetch(
-      `http://http://127.0.0.1:5500/calculate_bmi?weight=${encodeURIComponent(
+      `https://bmi-calc-brown.vercel.app/calculate_bmi?weight=${encodeURIComponent(
         weight
       )}&height=${encodeURIComponent(height)}`
     );
@@ -23,12 +23,12 @@ async function calculateBMI() {
     console.log(`Received data: ${JSON.stringify(data)}`);
     document.getElementById(
       "result"
-    ).innerHTML = `<strong>مؤشر كتلة الجسم:</strong> ${data.bmi.toFixed(
+    ).innerHTML = `<strong>BMI:</strong> ${data.bmi.toFixed(
       2
-    )}<br><strong>النتيجة:</strong> ${data.message}`;
+    )}<br><strong>The result:</strong> ${data.message}`;
   } catch (error) {
     console.error("There was a problem with the fetch operation:", error);
     document.getElementById("result").innerHTML =
-      "حدث خطأ أثناء الاتصال بالخادم";
+      "An error occurred while connecting to the server";
   }
 }
