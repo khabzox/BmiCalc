@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python API | Calculate BMI</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/logo.svg" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Calculate your body mass index (BMI)</h1>
+      <input
+        type="number"
+        id="weight"
+        placeholder="the weight in kilograms"
+        min="20"
+        max="200"
+      />
+      <input
+        type="number"
+        id="height"
+        placeholder="the height in metres"
+        step="0.01"
+        min="1"
+        max="3"
+      />
+      <button onclick="calculateBMI()" class="button-40" role="button">
+        Calculate
+      </button>
+      <div class="result" id="result"></div>
+
+      <div class="info">
+        <h2>What is body mass index?</h2>
+        <p>
+          Body mass index (BMI) is a measure used to estimate whether a person
+          is a healthy weight for their height. This index helps assess the risk
+          of developing certain weight-related diseases.
+        </p>
+        <h2>How to interpret the results:</h2>
+        <ul>
+          <li>Less than 18.5: underweight</li>
+          <li>18.5 - 24.9: healthy weight</li>
+          <li>25 - 29.9: weight gain</li>
+          <li>30 and above: obesity</li>
+        </ul>
+        <p>
+          Remember, BMI is a general guide only. Consult your doctor for a
+          comprehensive health evaluation.
+        </p>
+      </div>
+    </div>
+    <script>
+      async function calculateBMI() {
+        const weight = document.getElementById("weight").value;
+        const height = document.getElementById("height").value;
+        if (!weight || !height) {
+          alert("Please enter weight and height");
+          return;
+        }
+
+        try {
+          console.log(
+            `Sending request to API with weight=${weight} and height=${height}`
+          );
+          const response = await fetch(
+            `http://127.0.0.1:8000/calculate_bmi?weight=${encodeURIComponent(
+              weight
+            )}&height=${encodeURIComponent(height)}`
+          );
+          console.log(
+            `Received response: ${response.status} ${response.statusText}`
+          );
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const data = await response.json();
+          console.log(`Received data: ${JSON.stringify(data)}`);
+          document.getElementById(
+            "result"
+          ).innerHTML = `<strong>BMI:</strong> ${data.bmi.toFixed(
+            2
+          )}<br><strong>The result:</strong> ${data.message}`;
+        } catch (error) {
+          console.error("There was a problem with the fetch operation:", error);
+          document.getElementById("result").innerHTML =
+            "An error occurred while connecting to the server";
+        }
+      }
+    </script>
+  </body>
+</html>
