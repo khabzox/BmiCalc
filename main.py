@@ -14,7 +14,10 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-# perp folder directory
+# Serve static files
+app.mount("/assets", StaticFiles(directory="templates/assets"), name="assets")
+
+# Set up templates
 templates = Jinja2Templates(directory="templates")
 
 # Define the main path
