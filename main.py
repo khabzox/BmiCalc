@@ -14,11 +14,8 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-# إعداد القوالب
+# perp folder directory
 templates = Jinja2Templates(directory="templates")
-
-# تقديم مجلد ثابت
-app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Define the main path
 @app.get("/", response_class=HTMLResponse)
