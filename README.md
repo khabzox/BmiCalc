@@ -21,7 +21,7 @@ A FastAPI web application for calculating Body Mass Index (BMI). Features a resp
 
     ```sh
     git clone https://github.com/khabzox/BmiCalc.git
-    cd your-repo
+    cd BmiCalc
     ```
 
 ### Running the Application
