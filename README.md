@@ -102,8 +102,3 @@ To deploy the application on Vercel, follow these steps:
 ## Contributing
 
 Feel free to submit issues or pull requests to improve the project. Please follow the standard contribution guidelines and ensure that your changes are tested.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
