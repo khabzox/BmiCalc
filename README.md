@@ -20,21 +20,8 @@ A FastAPI web application for calculating Body Mass Index (BMI). Features a resp
 1. **Clone the Repository**
 
     ```sh
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/khabzox/BmiCalc.git
     cd your-repo
-    ```
-
-2. **Create a Virtual Environment** (optional but recommended)
-
-    ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-
-3. **Install Required Packages**
-
-    ```sh
-    pip install -r requirements.txt
     ```
 
 ### Running the Application
