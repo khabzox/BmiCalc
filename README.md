@@ -66,7 +66,8 @@ python-api/
 - **25 - 29.9**: Overweight
 - **30 and above**: Obesity
 
-**Note:** BMI is a general guide. For a comprehensive health evaluation, consult with a healthcare professional.
+> [!NOTE]
+> BMI is a general guide. For a comprehensive health evaluation, consult with a healthcare professional.
 
 ## Contributing
 
